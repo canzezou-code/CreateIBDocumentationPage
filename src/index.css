@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Franklin:ital,wght@0,700;1,700&display=swap');
+@import 'tailwindcss';
+
+:root {
+  font-family: "DM Sans", sans-serif;
+  color: #17233d;
+  background: #f7f5f0;
+  font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+
+.app-shell { min-height: 100vh; overflow-x: hidden; }
+.topbar { height: 74px; padding: 0 5vw; display: flex; align-items: center; justify-content: space-between; background: #0f1d35; color: white; border-bottom: 1px solid rgba(255,255,255,.09); position: relative; z-index: 10; }
+.brand { display: flex; align-items: center; gap: 10px; font: 700 20px "Libre Franklin", sans-serif; letter-spacing: -.5px; }
+.brand > span:last-child > span { color: #e7674d; }
+.brand-mark { width: 36px; height: 36px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.35); border-radius: 9px; color: #ff8168; }
+.desktop-nav { display: flex; align-items: center; align-self: stretch; gap: 28px; }
+.nav-item { border: 0; color: #aeb8c9; background: transparent; font-size: 14px; font-weight: 600; position: relative; }
+.nav-item.active { color: white; }
+.nav-item.active::after { content: ""; position: absolute; left: 0; right: 0; bottom: -27px; height: 2px; background: #f17960; }
+.top-actions { display: flex; align-items: center; gap: 12px; }
+.upload-button { display: flex; align-items: center; gap: 8px; padding: 9px 15px; color: white; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.17); border-radius: 8px; font-size: 13px; font-weight: 600; }
+.upload-button:hover { background: rgba(255,255,255,.12); }
+.avatar { width: 36px; height: 36px; border-radius: 50%; border: 0; background: #f0c860; color: #0f1d35; font-weight: 700; font-size: 12px; }
+.ibdocs-button { padding: 9px 13px; display: flex; align-items: center; gap: 5px; color: white; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.2); border-radius: 7px; font-size: 11px; font-weight: 700; text-decoration: none; }
+.ibdocs-button:hover { background: rgba(255,255,255,.15); }
+.login-button { padding: 9px 16px; color: #17233d; background: #f0c860; border: 0; border-radius: 7px; font-size: 11px; font-weight: 700; }
+.user-actions { display: flex; align-items: center; gap: 7px; }
+.account-button { width: 34px; height: 34px; position: relative; color: #17233d; background: #f0c860; border: 0; border-radius: 50%; font-size: 12px; font-weight: 800; }
+.account-button span { min-width: 150px; padding: 7px 9px; display: none; position: absolute; right: 0; top: 42px; color: #344157; background: white; border-radius: 6px; box-shadow: 0 8px 24px rgba(0,0,0,.18); font-size: 9px; }
+.account-button:hover span { display: block; }
+.logout-button { color: #aeb8c9; background: transparent; border: 0; font-size: 9px; }
+.mobile-menu { display: none; background: none; border: 0; color: white; }
+.mobile-nav { position: absolute; left: 0; right: 0; top: 100%; padding: 12px 5vw 18px; display: none; flex-direction: column; background: #0f1d35; border-top: 1px solid rgba(255,255,255,.08); box-shadow: 0 16px 25px rgba(0,0,0,.22); }
+.mobile-nav button { padding: 12px 2px; text-align: left; color: #d5dbe5; background: transparent; border: 0; border-bottom: 1px solid rgba(255,255,255,.07); font-size: 12px; font-weight: 600; }
+.mobile-nav button.mobile-login { margin-top: 9px; padding: 10px; text-align: center; color: #17233d; background: #f0c860; border: 0; border-radius: 6px; }
+
+.hero { min-height: 470px; padding: 68px max(6vw, calc((100vw - 1320px)/2)); display: flex; position: relative; overflow: hidden; background: #0f1d35; color: white; }
+.hero::before { content: ""; position: absolute; inset: 0; opacity: .18; background-image: radial-gradient(#8390a5 1px, transparent 1px); background-size: 22px 22px; mask-image: linear-gradient(90deg, transparent 20%, black 100%); }
+.hero-inner { width: 62%; position: relative; z-index: 2; }
+.eyebrow { margin: 0 0 14px; color: #f0826c; font-size: 11px; line-height: 1; letter-spacing: 2.2px; font-weight: 700; }
+.eyebrow.dark { color: #e0634b; }
+.hero h1 { margin: 0; max-width: 700px; font: 700 clamp(44px, 5vw, 70px)/.99 "Libre Franklin", sans-serif; letter-spacing: -4px; }
+.hero h1 em { color: #f27b62; font-style: italic; }
+.hero-copy { max-width: 555px; margin: 22px 0 27px; color: #b6c0cf; font-size: 16px; line-height: 1.65; }
+.hero-search { height: 57px; max-width: 585px; display: flex; align-items: center; gap: 13px; padding: 0 17px; border-radius: 9px; background: white; color: #718096; box-shadow: 0 12px 30px rgba(0,0,0,.18); }
+.hero-search input { flex: 1; min-width: 0; color: #17233d; border: 0; outline: 0; background: transparent; }
+.hero-search input::placeholder { color: #8993a3; }
+.hero-search kbd { padding: 4px 7px; border: 1px solid #d8dce3; border-radius: 5px; color: #7c8797; background: #f5f6f7; font: 11px "DM Sans"; }
+.hero-stats { display: flex; gap: 34px; margin-top: 30px; }
+.hero-stats div { display: flex; flex-direction: column; padding-right: 34px; border-right: 1px solid rgba(255,255,255,.13); }
+.hero-stats div:last-child { border: 0; }
+.hero-stats strong { font-size: 17px; }
+.hero-stats span { margin-top: 3px; color: #8e9bad; font-size: 11px; }
+.hero-art { position: absolute; width: 410px; height: 410px; right: 6vw; top: 32px; }
+.orbit { position: absolute; border: 1px solid rgba(255,255,255,.13); border-radius: 50%; }
+.orbit-one { inset: 20px; }
+.orbit-two { inset: 70px; }
+.paper-stack { position: absolute; width: 220px; height: 290px; border-radius: 3px; box-shadow: 0 20px 45px rgba(0,0,0,.32); }
+.stack-back { left: 66px; top: 74px; display: grid; place-items: end start; padding: 20px; transform: rotate(-10deg); background: #e9e3d7; color: #bdc0b7; font: 700 60px "Libre Franklin"; }
+.stack-front { left: 130px; top: 40px; padding: 30px 25px; transform: rotate(7deg); background: #ee6d54; color: #fff; }
+.stack-front::after { content: ""; position: absolute; left: 25px; right: 25px; top: 67px; height: 1px; background: rgba(255,255,255,.55); }
+.stack-front span { font-size: 9px; letter-spacing: 1.7px; }
+.stack-front b { display: block; margin-top: 58px; font: 700 25px/1.15 "Libre Franklin"; letter-spacing: -1px; }
+.stack-front small { position: absolute; left: 25px; bottom: 26px; font-size: 7px; letter-spacing: 1px; }
+.stack-front i { position: absolute; right: 20px; bottom: 12px; color: rgba(255,255,255,.19); font: 700 66px "Libre Franklin"; }
+
+.subject-strip { padding: 56px max(5vw, calc((100vw - 1320px)/2)) 60px; background: #fff; }
+.section-heading, .results-bar { display: flex; align-items: end; justify-content: space-between; margin-bottom: 25px; }
+.section-heading h2, .results-bar h2 { margin: 0; font: 700 28px "Libre Franklin"; letter-spacing: -1px; }
+.text-button { display: flex; align-items: center; gap: 6px; border: 0; background: none; color: #e0634b; font-size: 13px; font-weight: 700; }
+.subject-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.subject-card { min-width: 0; padding: 18px; display: grid; grid-template-columns: 38px 1fr; gap: 3px 11px; text-align: left; color: #17233d; background: #fbfaf7; border: 1px solid #e7e3dc; border-radius: 9px; transition: transform .2s, box-shadow .2s; }
+.subject-card:hover { transform: translateY(-3px); box-shadow: 0 10px 26px rgba(23,35,61,.09); }
+.subject-card.active { border-color: #e36d55; box-shadow: 0 0 0 2px rgba(227,109,85,.13); }
+.subject-icon { width: 38px; height: 38px; grid-row: 1/3; display: grid; place-items: center; border-radius: 8px; background: #e8effa; color: #4271b4; }
+.subject-card.violet .subject-icon { background:#eeeafa;color:#7965bc }.subject-card.green .subject-icon {background:#e4f1e8;color:#43805a}.subject-card.teal .subject-icon{background:#e0f1f0;color:#38827d}.subject-card.orange .subject-icon{background:#f8eadc;color:#b46a31}.subject-card.rose .subject-icon{background:#f7e4e7;color:#b95868}
+.subject-name { align-self: end; font-size: 13px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.subject-meta { color: #8b93a1; font-size: 8px; letter-spacing: .5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.subject-arrow { display: none; }
+.year-archive { margin-top: 22px; padding: 17px 19px; display: flex; align-items: center; justify-content: space-between; gap: 24px; background: #f7f5f0; border: 1px solid #e7e3dc; border-radius: 9px; }
+.year-archive > div:first-child { flex: 0 0 auto; }
+.year-archive strong { display: block; color: #27344b; font-size: 12px; }
+.year-archive span { color: #89919e; font-size: 9px; }
+.year-links { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 6px; }
+.year-links a { padding: 5px 8px; color: #596579; background: white; border: 1px solid #dedad2; border-radius: 5px; font-size: 9px; font-weight: 700; text-decoration: none; }
+.year-links a:hover { color: white; background: #e46b52; border-color: #e46b52; }
+
+.library { max-width: 1440px; margin: auto; padding: 56px max(5vw, 60px) 75px; scroll-margin-top: 20px; }
+.favorites-library { min-height: calc(100vh - 150px); padding-top: 72px; }
+.filters-title { display: flex; justify-content: space-between; align-items: center; padding-bottom: 17px; border-bottom: 1px solid #dedbd4; }
+.filters-title h3 { margin: 0; font: 700 16px "Libre Franklin"; }
+.close-filter { display: none; }
+.filters > label { display: flex; flex-direction: column; gap: 8px; margin-top: 21px; color: #485267; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .7px; }
+.filters select { width: 100%; padding: 10px 9px; color: #25324a; background: white; border: 1px solid #dcd9d2; border-radius: 6px; font-size: 12px; text-transform: none; letter-spacing: 0; outline-color: #e36d55; }
+.session-filter { display: flex; flex-direction: column; gap: 10px; margin-top: 24px; color: #485267; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .7px; }
+.check-row { display: flex; align-items: center; gap: 8px; color: #5f6877; font-size: 12px; font-weight: 500; text-transform: none; letter-spacing: 0; }
+.check-row input { accent-color: #e66c54; }
+.clear-button { width: 100%; margin-top: 22px; padding: 9px; color: #dd624b; background: transparent; border: 1px solid #e1a596; border-radius: 6px; font-size: 11px; font-weight: 700; }
+.library-note { margin-top: 28px; padding: 17px; background: #ebeef3; border-radius: 8px; color: #536077; }
+.library-note strong { display: block; margin: 8px 0 5px; color: #25324a; font-size: 12px; }
+.library-note p { margin: 0; font-size: 10px; line-height: 1.5; }
+.results-bar h2 span { display: inline-grid; place-items: center; min-width: 26px; height: 22px; margin-left: 6px; padding: 0 5px; border-radius: 12px; vertical-align: 4px; color: #606a7b; background: #e8e5df; font: 600 10px "DM Sans"; }
+.result-actions { display: flex; gap: 10px; }
+.sort-select { padding: 6px 28px 6px 9px; color: #566174; background: white; border: 1px solid #ddd9d2; border-radius: 7px; font-size: 10px; font-weight: 600; }
+.view-toggle { display: flex; padding: 3px; border: 1px solid #ddd9d2; border-radius: 7px; background: #fff; }
+.view-toggle button { padding: 6px 8px; display: grid; place-items: center; color: #9299a5; background: transparent; border: 0; border-radius: 4px; }
+.view-toggle button.selected { color: #26334b; background: #ebe9e5; }
+.filter-trigger { display: none; }
+.paper-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.paper-card { min-width: 0; overflow: hidden; background: #fff; border: 1px solid #e3dfd8; border-radius: 8px; transition: box-shadow .2s, transform .2s; }
+.paper-card:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(23,35,61,.09); }
+.paper-cover { height: 156px; padding: 19px; position: relative; overflow: hidden; color: #fff; background: #4274b6; }
+.paper-cover::after { content: ""; width: 100px; height: 100px; position: absolute; right: -30px; bottom: -35px; border: 20px solid rgba(255,255,255,.12); border-radius: 50%; }
+.paper-cover.violet { background:#7867b7 }.paper-cover.green{background:#477d5b}.paper-cover.teal{background:#3f8480}.paper-cover.orange{background:#b66e38}.paper-cover.rose{background:#ad5967}
+.cover-brand { display: block; margin-bottom: 30px; font-size: 7px; letter-spacing: 1px; opacity: .78; }
+.paper-cover strong { display: block; width: 75%; font: 700 17px/1.15 "Libre Franklin"; }
+.paper-cover small { display: block; margin-top: 3px; font-size: 9px; opacity: .75; }
+.cover-number { position: absolute; right: 12px; bottom: -8px; color: rgba(255,255,255,.16); font: 700 58px "Libre Franklin"; }
+.bookmark { width: 28px; height: 28px; display: grid; place-items: center; position: absolute; right: 13px; top: 13px; color: white; background: rgba(0,0,0,.12); border: 0; border-radius: 50%; z-index: 1; }
+.bookmark.saved { color: #17233d; background: #f1cd69; }
+.bookmark.saved svg { fill: currentColor; }
+.paper-info { padding: 15px; }
+.paper-card-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.paper-tags { display: flex; gap: 5px; }
+.paper-tags span { padding: 3px 6px; color: #687284; background: #f0f1f3; border-radius: 3px; font-size: 7px; font-weight: 700; letter-spacing: .5px; }
+.paper-tags span.markscheme { color: #8d5f19; background: #fbefd9; }
+.source-badge { flex: 0 0 auto; color: #9ba2ad; font-size: 6px; font-weight: 700; letter-spacing: .7px; }
+.paper-info h3 { min-height: 49px; margin: 10px 0 11px; color: #243149; font-size: 11px; line-height: 1.45; }
+.paper-details { display: flex; justify-content: space-between; align-items: center; color: #8b93a0; font-size: 9px; }
+.paper-details span { display: flex; align-items: center; gap: 4px; }
+.document-meta { padding: 9px 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; border-top: 1px solid #eeebe6; border-bottom: 1px solid #eeebe6; }
+.document-meta div { display: flex; flex-direction: column; gap: 2px; }
+.document-meta small { color: #9aa1ac; font-size: 7px; }
+.document-meta strong { color: #48546a; font-size: 9px; }
+.document-source { margin-top: 11px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.document-source > div { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.document-source span { color: #9aa1ac; font-size: 7px; }
+.document-source strong { overflow: hidden; color: #596579; font-size: 8px; white-space: nowrap; text-overflow: ellipsis; }
+.source-link { flex: 0 0 auto; padding: 8px 9px; display: flex; align-items: center; justify-content: center; gap: 5px; color: white; background: #17233d; border: 1px solid #17233d; border-radius: 5px; font-size: 8px; font-weight: 700; text-decoration: none; }
+.source-link:hover { background: #293854; }
+.paper-grid.list { grid-template-columns: 1fr; }
+.paper-grid.list .paper-card { display: grid; grid-template-columns: 170px 1fr; }
+.paper-grid.list .paper-cover { height: 145px; }
+.paper-grid.list .paper-info { display: grid; grid-template-columns: 1.3fr 1fr; gap: 5px 22px; }
+.paper-grid.list .paper-card-top { grid-column: 1/3; }
+.paper-grid.list .paper-info h3 { min-height: 0; margin: 8px 0; font-size: 14px; }
+.paper-grid.list .document-meta { grid-row: 2/4; grid-column: 2; }
+.paper-grid.list .document-source { grid-column: 1/3; }
+.empty-state { padding: 80px; text-align: center; color: #808997; background: white; border: 1px dashed #d4d0c8; border-radius: 10px; }
+.empty-state svg { margin: auto; }
+.empty-state h3 { color: #27344b; margin-bottom: 5px; }
+.empty-state p { font-size: 13px; }
+.empty-state button { padding: 9px 15px; color: white; background: #e46b52; border: 0; border-radius: 6px; }
+.load-more { margin: 28px auto 0; padding: 11px 22px; display: block; color: #27344b; background: white; border: 1px solid #d8d4cc; border-radius: 7px; font-size: 11px; font-weight: 700; }
+.load-more:hover { color: white; background: #17233d; border-color: #17233d; }
+
+.resource-hub { min-height: calc(100vh - 150px); padding: 72px max(5vw, calc((100vw - 1320px)/2)) 85px; }
+.resource-hub > h1 { margin: 0; font: 700 clamp(36px, 5vw, 58px)/1.05 "Libre Franklin"; letter-spacing: -3px; }
+.hub-intro { max-width: 600px; margin: 16px 0 38px; color: #6f7888; font-size: 15px; line-height: 1.65; }
+.resource-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.resource-card { padding: 25px; position: relative; overflow: hidden; background: white; border: 1px solid #e3dfd8; border-radius: 10px; transition: transform .2s, box-shadow .2s; }
+.resource-card:hover { transform: translateY(-3px); box-shadow: 0 13px 28px rgba(23,35,61,.09); }
+.resource-icon { width: 43px; height: 43px; margin-bottom: 22px; display: grid; place-items: center; color: #4274b6; background: #e8effa; border-radius: 9px; }
+.resource-card.rose .resource-icon {color:#ad5967;background:#f7e4e7}.resource-card.green .resource-icon{color:#477d5b;background:#e4f1e8}.resource-card.violet .resource-icon{color:#7867b7;background:#eeeafa}.resource-card.teal .resource-icon{color:#3f8480;background:#e0f1f0}.resource-card.orange .resource-icon{color:#b66e38;background:#f8eadc}
+.resource-card small { color: #e16750; font-size: 8px; font-weight: 700; letter-spacing: 1px; }
+.resource-card h2 { margin: 5px 0 7px; font: 700 19px "Libre Franklin"; letter-spacing: -.5px; }
+.resource-card p { margin: 0 0 20px; color: #858e9c; font-size: 11px; }
+.resource-card a { display: flex; align-items: center; gap: 6px; color: #25324a; font-size: 10px; font-weight: 700; text-decoration: none; }
+.resource-card a:hover { color: #e16750; }
+
+.login-modal { width: min(420px, 94vw); padding: 35px; position: relative; background: #fff; border-radius: 13px; box-shadow: 0 30px 70px rgba(0,0,0,.35); }
+.login-close { width: 32px; height: 32px; display: grid; place-items: center; position: absolute; right: 17px; top: 17px; color: #657084; background: #f1f0ed; border: 0; border-radius: 50%; }
+.login-mark { width: 46px; height: 46px; margin-bottom: 24px; display: grid; place-items: center; color: #ef755c; background: #17233d; border-radius: 10px; }
+.login-modal h2 { margin: 0; font: 700 27px "Libre Franklin"; letter-spacing: -1px; }
+.login-modal > p:not(.eyebrow) { margin: 8px 0 24px; color: #7c8594; font-size: 12px; }
+.login-modal form { display: flex; flex-direction: column; gap: 15px; }
+.login-modal label { display: flex; flex-direction: column; gap: 7px; color: #4b5669; font-size: 10px; font-weight: 700; }
+.login-modal input { padding: 11px 12px; color: #27344b; background: #faf9f7; border: 1px solid #dbd8d1; border-radius: 7px; outline-color: #e36d55; font-size: 12px; }
+.login-modal form button { padding: 12px; color: white; background: #e46b52; border: 0; border-radius: 7px; font-size: 11px; font-weight: 700; }
+.login-modal > small { margin-top: 17px; display: block; color: #9aa1ac; font-size: 8px; line-height: 1.5; text-align: center; }
+
+footer { padding: 28px 5vw; display: flex; align-items: center; justify-content: space-between; gap: 30px; color: #8994a7; background: #0f1d35; font-size: 10px; }
+.footer-brand { color: white; flex: 0 0 auto; }
+footer p { text-align: center; }
+
+.modal-backdrop { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: 20px; background: rgba(8,15,29,.72); backdrop-filter: blur(4px); }
+.preview-modal { width: min(920px, 95vw); height: min(720px, 90vh); display: grid; grid-template-rows: auto 1fr auto; overflow: hidden; background: #f6f5f2; border-radius: 12px; box-shadow: 0 30px 70px rgba(0,0,0,.35); }
+.preview-head { padding: 18px 22px; display: flex; justify-content: space-between; align-items: center; background: white; border-bottom: 1px solid #e0ddd7; }
+.preview-head span { color: #e16951; font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+.preview-head h2 { margin: 3px 0 0; font-size: 16px; }
+.preview-head button { width: 34px; height: 34px; display: grid; place-items: center; border: 0; border-radius: 50%; color: #566174; background: #f0efec; }
+.document-preview { overflow: auto; padding: 28px; display: grid; place-items: start center; background: #d9dde2; }
+.document-preview.has-pdf { padding: 0; display: block; background: #525963; }
+.document-preview iframe { width: 100%; height: 100%; min-height: 520px; display: block; border: 0; }
+.preview-page { width: min(480px, 90%); min-height: 560px; padding: 52px 48px; background: white; box-shadow: 0 8px 22px rgba(29,40,56,.18); }
+.preview-page > p:first-child { color: #707989; font-size: 8px; letter-spacing: 1.4px; }
+.preview-page h3 { margin: 45px 0 5px; font: 700 30px/1.1 "Libre Franklin"; }
+.preview-page h4 { margin: 0; color: #687284; font-size: 14px; }
+.doc-rule { margin: 25px 0; height: 4px; background: #e36d55; }
+.preview-page small { color: #8b93a0; text-transform: uppercase; letter-spacing: 1px; }
+.preview-message { margin: 80px 0 20px; color: #77808d; font-size: 12px; line-height: 1.6; text-align: center; }
+.preview-page button { margin: auto; padding: 10px 14px; display: flex; align-items: center; gap: 7px; color: white; background: #17233d; border: 0; border-radius: 6px; font-size: 11px; font-weight: 700; }
+.preview-foot { padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; color: #6f7886; background: white; font-size: 11px; border-top: 1px solid #e0ddd7; }
+.preview-foot button, .download-link { display: flex; align-items: center; gap: 6px; color: #4b5669; background: transparent; border: 0; font-weight: 700; text-decoration: none; }
+.download-link { padding: 8px 12px; color: white; background: #e46b52; border-radius: 6px; }
+
+@media (max-width: 1100px) {
+  .subject-grid { grid-template-columns: repeat(3, 1fr); }
+  .paper-grid { grid-template-columns: repeat(3, 1fr); }
+  .hero-inner { width: 68%; }
+  .hero-art { right: -80px; opacity: .65; }
+  .library { grid-template-columns: 185px 1fr; gap: 30px; }
+  .resource-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 800px) {
+  .desktop-nav, .upload-button, .avatar { display: none; }
+  .mobile-menu { display: block; }
+  .mobile-nav { display: flex; }
+  .hero { min-height: auto; padding-top: 54px; padding-bottom: 55px; }
+  .hero-inner { width: 100%; }
+  .hero h1 { font-size: 45px; letter-spacing: -3px; }
+  .hero-art { display: none; }
+  .subject-grid { grid-template-columns: repeat(2, 1fr); }
+  .library { display: block; padding-inline: 5vw; }
+  .filters { width: min(320px, 88vw); position: fixed; inset: 0 auto 0 0; z-index: 40; padding: 25px; overflow-y: auto; background: #f7f5f0; box-shadow: 20px 0 40px rgba(0,0,0,.2); transform: translateX(-110%); transition: transform .25s; }
+  .filters.open { transform: translateX(0); }
+  .filters.open::after { content: ""; position: fixed; inset: 0 0 0 100%; width: 100vw; background: rgba(12,23,42,.45); }
+  .close-filter { display: grid; place-items: center; background: transparent; border: 0; color: #536077; }
+  .filter-trigger { display: flex; align-items: center; gap: 6px; padding: 7px 10px; color: #4b5669; border: 1px solid #ddd9d2; border-radius: 7px; background: white; font-size: 11px; font-weight: 700; }
+  .paper-grid { grid-template-columns: repeat(2, 1fr); }
+  .year-archive { align-items: flex-start; flex-direction: column; }
+  .year-links { justify-content: flex-start; }
+}
+
+@media (max-width: 520px) {
+  .topbar { height: 66px; }
+  .ibdocs-button { padding: 8px; font-size: 9px; }
+  .login-button, .logout-button { display: none; }
+  .hero { padding-inline: 20px; }
+  .hero h1 { font-size: 39px; }
+  .hero-copy { font-size: 14px; }
+  .hero-stats { gap: 16px; }
+  .hero-stats div { padding-right: 16px; }
+  .hero-search kbd { display: none; }
+  .subject-strip { padding: 43px 20px; }
+  .section-heading { align-items: start; }
+  .section-heading .text-button { font-size: 0; }
+  .subject-grid { grid-template-columns: 1fr; }
+  .subject-card { grid-template-columns: 38px 1fr auto; }
+  .subject-arrow { display: block; grid-column: 3; grid-row: 1/3; align-self: center; }
+  .library { padding: 45px 20px 60px; }
+  .resource-hub { padding: 50px 20px 65px; }
+  .resource-grid { grid-template-columns: 1fr; }
+  .paper-grid { grid-template-columns: 1fr; }
+  .paper-grid.list .paper-card { grid-template-columns: 1fr; }
+  .paper-grid.list .paper-cover { height: 150px; }
+  .paper-grid.list .paper-info { display: block; }
+  .paper-grid.list .document-meta, .paper-grid.list .document-source { margin-top: 11px; }
+  footer { flex-direction: column; text-align: center; }
+  .preview-page { padding: 35px 25px; }
+}
